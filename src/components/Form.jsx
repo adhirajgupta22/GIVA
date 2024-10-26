@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const API_URL = 'http://localhost:5000/api/products';
 
@@ -12,10 +13,12 @@ const ProductForm = ({ onProductAdded }) => {
     setProduct((prevProduct) => ({ ...prevProduct, [name]: value }));
   };
 
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios.post(API_URL, product);
     setProduct({ name: '', description: '', price: '', quantity: '' });
+    navigate('/');
     onProductAdded();
   };
 
