@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ProductItem from './Item';
-import ProductForm from './Form';
 
 const API_URL = 'http://localhost:5000/api/products';
 
@@ -21,16 +20,23 @@ const ProductList = () => {
     await axios.delete(`${API_URL}/${id}`);
     loadProducts();
   };
+  
+  const handleEdit = async (id) => {
+    
+    await axios.put(`${API_URL}/${id}`);
+    loadProducts();
+  };
 
   return (
-    <div>
-      <h2>Product List</h2>
-      <ProductForm onProductAdded={loadProducts} />
-      <ul>
+    <div className="container px-5 mx-auto">
+      <div className="text-5xl font-semibold text-gray-800 mb-6">Product List</div>
+      <div className='flex flex-wrap'>
         {products.map((product) => (
-          <ProductItem key={product.id} product={product} onDelete={handleDelete} />
+          <div className="w-full sm:w-1/2 lg:w-1/3" key={product.id}>
+            <ProductItem product={product} onDelete={handleDelete} onEdit={handleEdit} />
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

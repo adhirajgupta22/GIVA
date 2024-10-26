@@ -20,25 +20,58 @@ const ProductForm = ({ onProductAdded }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-    <Form.Group controlId="formName">
-      <Form.Label>Name</Form.Label>
-      <Form.Control type="text" name="name" value={product.name} onChange={handleChange} required />
-    </Form.Group>
-    <Form.Group controlId="formDescription">
-      <Form.Label>Description</Form.Label>
-      <Form.Control type="text" name="description" value={product.description} onChange={handleChange} />
-    </Form.Group>
-    <Form.Group controlId="formPrice">
-      <Form.Label>Price</Form.Label>
-      <Form.Control type="number" name="price" value={product.price} onChange={handleChange} required />
-    </Form.Group>
-    <Form.Group controlId="formQuantity">
-      <Form.Label>Quantity</Form.Label>
-      <Form.Control type="number" name="quantity" value={product.quantity} onChange={handleChange} required />
-    </Form.Group>
-    <Button variant="primary" type="submit">Add Product</Button>
-  </Form>
+    <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-10 mt-20 bg-white shadow-md rounded-lg">
+      <h2 className="text-2xl font-semibold text-gray-800 mb-4">Add Product</h2>
+      <div className="mb-4">
+        <label htmlFor="formName" className="block text-gray-700 font-medium mb-2">Name</label>
+        <input
+          type="text"
+          name="name"
+          value={product.name}
+          onChange={handleChange}
+          required
+          className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="formDescription" className="block text-gray-700 font-medium mb-2">Description</label>
+        <input
+          type="text"
+          name="description"
+          value={product.description}
+          onChange={handleChange}
+          className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="formPrice" className="block text-gray-700 font-medium mb-2">Price</label>
+        <input
+          type="number"
+          name="price"
+          value={product.price}
+          onChange={handleChange}
+          required
+          className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="formQuantity" className="block text-gray-700 font-medium mb-2">Quantity</label>
+        <input
+          type="number"
+          name="quantity"
+          value={product.quantity}
+          onChange={handleChange}
+          required
+          className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+      <button
+        type="submit"
+        className="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+      >
+        Add Product
+      </button>
+    </form>
   );
 };
 
